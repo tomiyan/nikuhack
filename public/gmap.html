@@ -51,18 +51,28 @@ function initialize() {
 	}*/
 	map.data.setStyle(function(feature){
 		var props = feature.k;
-		console.dir(props);
-		var color;
+		console.dir(feature);
+		var color, icon;
 		switch(props.id){
-			case 'beef': default:
+			case 'beef':
 				color = 'orange';
 				break;
 			case 'pork':
 				color = 'pink';
 				break;
+			default:
+				icon = {
+					path: google.maps.SymbolPath.CIRCLE,
+					scale:  ~~(Math.random() * 20), //円のサイズ(今回はランダムに設定)
+					fillColor: '#f00',
+					fillOpacity: 0.35,
+					strokeWeight: 0
+				}
+				break;
 		}
 		return {
 			fillColor: color,
+			icon: icon,
 			strokeWeight: 2
 		}
 	});
