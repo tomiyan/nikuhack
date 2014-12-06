@@ -19,22 +19,30 @@ function initialize() {
 	};
 	var map = new google.maps.Map(document.getElementById("map_canvas"),
 		mapOptions);
-	
-	var featureStyle = {
-		fillColor: 'pink',
-		strokeWeight: 2
-	}
-	map.data.setStyle(featureStyle);
-	map.data.loadGeoJson('./pork.json', function(data){
-		console.dir(data);
-	});
 
-	var featureStyle = {
+
+	/*var featureStyle = {
 		fillColor: 'orange',
 		strokeWeight: 2
-	}
-	map.data.setStyle(featureStyle);
-	map.data.loadGeoJson('./beef.json');
+	}*/
+	map.data.setStyle(function(feature){
+		var props = feature.k;
+		console.dir(props);
+		var color;
+		switch(props.id){
+			case 'beef': default:
+				color = 'orange';
+				break;
+			case 'pork':
+				color = 'pink';
+				break;
+		}
+		return {
+			fillColor: color,
+			strokeWeight: 2
+		}
+	});
+	map.data.loadGeoJson('./geo.json');
 }
 </script>
 </head>
