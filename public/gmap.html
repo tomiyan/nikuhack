@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <style type="text/css">
 	html { height: 100% }
 	body { height: 100%; margin: 0; padding: 0 }
 	#map_canvas { height: 100% }
+	.new {
+		stroke: black;
+	}
 </style>
 <script type="text/javascript"
 src="http://maps.googleapis.com/maps/api/js?sensor=SET_TO_TRUE_OR_FALSE">
@@ -66,8 +70,10 @@ function initialize() {
 					scale:  ~~(Math.random() * 10) + 10, //円のサイズ(今回はランダムに設定)
 					fillColor: /beef/.test(props.id)?'orange':'#ff8888',
 					fillOpacity: 0.8,
-					strokeWeight: 0,
+					strokeWeight: (props.id=='beef4'?4:0),
+					strokeColor: '#ffffaa',
 					infoWindowHtml: 'aaaaaaaa',
+					class: '',
 					click: function(a, b){
 						console.log('%o, %o', a, b);
 					}
@@ -93,11 +99,17 @@ function initialize() {
 	    console.dir(e.latLng);
 	    if(!!infowindow) infowindow.close();
 	    infowindow = new google.maps.InfoWindow({
-			content: 'aaaa',
+			content: '丹波屋',
 			position: e.latLng//{lat:e.latLng.k, lng:e.latLng.B}
 		}).open(map.data.getMap(), map.data); //this.k
 	});
-	map.data.loadGeoJson('./geo2.json');
+
+
+	var hash = location.hash;
+	var geourl = 'http://128.199.153.239/api/point?id=1';
+	if(/check/.test(hash)) geourl = 'http://128.199.153.239/api/point?id=6843910';
+
+	map.data.loadGeoJson(geourl);
 }
 </script>
 </head>
