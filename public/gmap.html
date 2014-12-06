@@ -12,6 +12,29 @@ src="http://maps.googleapis.com/maps/api/js?sensor=SET_TO_TRUE_OR_FALSE">
 </script>
 <script type="text/javascript">
 function initialize() {
+	var styles = [
+	  {
+	    stylers: [
+	      { hue: "#ff7a00" },
+	      { saturation: -20 }
+	    ]
+	  },{
+	    featureType: "road",
+	    elementType: "geometry",
+	    stylers: [
+	      { lightness: 100 },
+	      { visibility: "simplified" }
+	    ]
+	  },{
+	    featureType: "road",
+	    elementType: "labels",
+	    stylers: [
+	      { visibility: "off" }
+	    ]
+	  }
+	];
+	var styledMap = new google.maps.StyledMapType(styles,
+    {name: "Styled Map"});
 	var mapOptions = {
 		center: new google.maps.LatLng(35.65858, 139.745433),
 		zoom: 17,
@@ -19,7 +42,8 @@ function initialize() {
 	};
 	var map = new google.maps.Map(document.getElementById("map_canvas"),
 		mapOptions);
-
+	map.mapTypes.set('map_style', styledMap);
+	map.setMapTypeId('map_style');
 
 	/*var featureStyle = {
 		fillColor: 'orange',
