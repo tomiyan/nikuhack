@@ -58,25 +58,46 @@ function initialize() {
 				color = 'orange';
 				break;
 			case 'pork':
-				color = 'pink';
+				color = '#ff8888';
 				break;
 			default:
 				icon = {
 					path: google.maps.SymbolPath.CIRCLE,
-					scale:  ~~(Math.random() * 20), //円のサイズ(今回はランダムに設定)
-					fillColor: '#f00',
-					fillOpacity: 0.35,
-					strokeWeight: 0
+					scale:  ~~(Math.random() * 10) + 10, //円のサイズ(今回はランダムに設定)
+					fillColor: /beef/.test(props.id)?'orange':'#ff8888',
+					fillOpacity: 0.8,
+					strokeWeight: 0,
+					infoWindowHtml: 'aaaaaaaa',
+					click: function(a, b){
+						console.log('%o, %o', a, b);
+					}
 				}
 				break;
 		}
 		return {
 			fillColor: color,
 			icon: icon,
-			strokeWeight: 2
+			fillOpacity: .4,
+			strokeWeight: 0
 		}
 	});
-	map.data.loadGeoJson('./geo.json');
+	/*map.data.addListener('click', function(event) {
+		console.dir(event);
+		//map.data.overrideStyle(event.feature, {fillColor: 'red'});
+		new google.maps.InfoWindow({
+			content: 'aaaa'
+		}).open(map.data.getMap(), map.data);// map.data
+	});*/
+	var infowindow;
+	google.maps.event.addListener(map.data, 'click', function(e, a, b) {
+	    console.dir(e.latLng);
+	    if(!!infowindow) infowindow.close();
+	    infowindow = new google.maps.InfoWindow({
+			content: 'aaaa',
+			position: e.latLng//{lat:e.latLng.k, lng:e.latLng.B}
+		}).open(map.data.getMap(), map.data); //this.k
+	});
+	map.data.loadGeoJson('./geo2.json');
 }
 </script>
 </head>
