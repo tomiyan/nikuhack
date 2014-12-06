@@ -17,4 +17,13 @@ class App < Sinatra::Application
     result = Services::Gnavi::Api.search(freeword: 'サッポロラガー', page: page)
     slim :index, locals: {result: result, title: 'Title'}, layout: :layout
   end
+
+  get '/api/point' do
+    headers["Access-Control-Allow-Origin"] = "*"
+    Services::Gnavi::Api.point(params)
+  end
+
+  get '/api/point/1' do
+    Services::Gnavi::Api.point_once(params)
+  end
 end
