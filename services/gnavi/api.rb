@@ -13,7 +13,7 @@ module Gnavi
       page = params[:page]
 
       api_params = {
-        keyid: KEY_ID,
+        keyid: ENV['GNAVI_KEY'],
         format: 'json',
         freeword: freeword,
         offset_page: page,
@@ -24,7 +24,7 @@ module Gnavi
         builder.adapter Faraday.default_adapter
       end
       response = conn.get PATH_SEARCH, api_params
-      Oj.load(response.body)
+      Yajl::Parser.parse(response.body)
     end
 
     def self.point_once(params = {})
