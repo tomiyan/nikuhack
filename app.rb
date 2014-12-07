@@ -1,15 +1,18 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'padrino-helpers'
+require 'dotenv'
 require_relative './services/gnavi/api'
 
 class App < Sinatra::Application
   register ::Padrino::Rendering
   configure :production do
+    Dotenv.load
   end
 
   configure :development do
     register Sinatra::Reloader
+    Dotenv.load
   end
 
   get '/' do
