@@ -16,6 +16,7 @@ src="http://maps.googleapis.com/maps/api/js?sensor=SET_TO_TRUE_OR_FALSE">
 </script>
 <script type="text/javascript">
 function initialize() {
+	var hash = location.hash;
 	var styles = [
 	  {
 	    stylers: [
@@ -39,29 +40,21 @@ function initialize() {
 	];
 	var styledMap = new google.maps.StyledMapType(styles,
     {name: "Styled Map"});
+
 	var mapOptions = {
 		center: new google.maps.LatLng(35.65858, 139.745433),
 		zoom: 17,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
+    if(/japan/.test(hash)) {
+    	mapOptions = {
+			center: new google.maps.LatLng(38.268215, 136.906398),
+			zoom: 6,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+    	};
+    }
 	var map = new google.maps.Map(document.getElementById("map_canvas"),
 		mapOptions);
-	
-	var featureStyle = {
-		fillColor: 'pink',
-		strokeWeight: 2
-	}
-	map.data.setStyle(featureStyle);
-	map.data.loadGeoJson('./pork.json', function(data){
-		console.dir(data);
-	});
-
-	var featureStyle = {
-		fillColor: 'orange',
-		strokeWeight: 2
-	}
-	map.data.setStyle(featureStyle);
-	map.data.loadGeoJson('./beef.json');
 	map.mapTypes.set('map_style', styledMap);
 	map.setMapTypeId('map_style');
 
@@ -121,7 +114,6 @@ function initialize() {
 	});
 
 
-	var hash = location.hash;
 	var geourl = 'http://128.199.153.239/api/point?id=1';
 	if(/check/.test(hash)) geourl = 'http://128.199.153.239/api/point?id=6843910';
 

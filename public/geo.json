@@ -1,0 +1,141 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beef"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              139.74295020103455,
+              35.6599898714969
+            ],
+            [
+              139.74605083465576,
+              35.659301219143124
+            ],
+            [
+              139.7445809841156,
+              35.661445610723376
+            ],
+            [
+              139.74295020103455,
+              35.6599898714969
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pork"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              139.7420060634613,
+              35.658525388491285
+            ],
+            [
+              139.744291305542,
+              35.657505464818655
+            ],
+            [
+              139.7416305541992,
+              35.656921400097936
+            ],
+            [
+              139.7420060634613,
+              35.658525388491285
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beef1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.74459171295166,
+          35.661480478403355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beef2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.7429394721985,
+          35.66001602273504
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beef3"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.74602937698364,
+          35.65930993629862
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pork1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.74199533462524,
+          35.658542822970745
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pork2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.74161982536316,
+          35.65694755234099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "pork3"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.74430203437805,
+          35.65752289952078
+        ]
+      }
+    }
+  ]
+}
